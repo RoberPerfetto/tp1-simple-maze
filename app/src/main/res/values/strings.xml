@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">sampleProject</string>
+    <string name="title_activity_main">SimpleMaze</string>
+    <string name="bot_op_01">3x3</string>
+    <string name="bot_op_02">4x4</string>
+    <string name="bot_op_03">5x5</string>
+    <string name="bot_op_04">6x6</string>
+    <string name="bot_op_05">7x7</string>
+    <string name="bot_op_06">8x8</string>
+    <string name="bot_op_07">9x9</string>
+    <string name="bot_enter">Enter</string>
+    <string name="edit_text_name">Name</string>
+
+</resources>
