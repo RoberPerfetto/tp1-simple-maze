@@ -11,12 +11,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.media.MediaPlayer;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private static final int SPRITE_HEIGHT = 72;
     private static final int SPRITE_WIDTH = 52;
     private GameAnimationThread thread;
+    final MediaPlayer mp = MediaPlayer.create(this.getContext(),R.raw.winning);
 
     private MazeBoard board;
     private Bitmap playerSprites;
@@ -80,6 +83,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void update() {
         board.update();
+        Player jugador = board.getPlayer();
+        int x = jugador.getX();
+        int y = jugador.getY();
+        BoardPiece piezaActual = board.getPiece(x,y);
+        if(piezaActual.getExit()) {
+            mp.start();
+            this.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

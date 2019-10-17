@@ -56,7 +56,7 @@ public class MazeBoard {
         maze.board[5] = new BoardPiece(false,true,false,true);
         maze.board[6] = new BoardPiece(false,true,true,false);
         maze.board[7] = new BoardPiece(true,false,true,false);
-        maze.board[8] = new BoardPiece(true,true,false,false);
+        maze.board[8] = new BoardPiece(true,true,false,true, true);
 
         return maze;
     }

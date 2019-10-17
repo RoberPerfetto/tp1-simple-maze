@@ -20,6 +20,11 @@ class BoardPiece {
             openings.add(MazeBoard.Direction.SOUTH);
     }
 
+    public BoardPiece(boolean west, boolean north, boolean east, boolean south, boolean isExit) {
+        this(west,north,east,south);
+        this.exit = isExit;
+    }
+
     public boolean getVisited() {
         return this.visited;
     }
