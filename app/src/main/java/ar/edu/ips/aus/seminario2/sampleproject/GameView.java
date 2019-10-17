@@ -6,12 +6,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.app.Activity;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.media.MediaPlayer;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
@@ -87,9 +87,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         int x = jugador.getX();
         int y = jugador.getY();
         BoardPiece piezaActual = board.getPiece(x,y);
+
         if(piezaActual.getExit()) {
+
             mp.start();
-            this.setVisibility(View.INVISIBLE);
+            this.endGame();
+
+        }
+    }
+
+    public void endGame() {
+        synchronized (this.getHolder()) {
+            //quit to main menu
+            ((Activity) this.getContext()).finish();
         }
     }
 
