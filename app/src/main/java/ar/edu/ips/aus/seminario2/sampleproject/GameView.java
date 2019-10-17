@@ -97,10 +97,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void endGame() {
-        synchronized (this.getHolder()) {
-            //quit to main menu
-            ((Activity) this.getContext()).finish();
-        }
+        //quit to main menu
+        ((Activity) this.getContext()).finish();
     }
 
     @Override
