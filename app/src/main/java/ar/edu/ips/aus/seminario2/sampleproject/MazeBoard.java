@@ -42,23 +42,15 @@ public class MazeBoard {
     public static MazeBoard from(String repr) {
         if (repr == null || repr.isEmpty())
             throw new IllegalArgumentException("Empty representation.");
+        MazeBoard mb;
+        switch (repr){
+            case "3x3":
+                mb = map3x3();
+                return mb;
+            default:
+                return null;
+        }
 
-        MazeBoard maze = new MazeBoard();
-
-        // test with simple layout
-        maze.board = new BoardPiece[9];
-        maze.height = 3; maze.width = 3;
-        maze.board[0] = new BoardPiece(false,false,true,true);
-        maze.board[1] = new BoardPiece(true,false, true, false);
-        maze.board[2] = new BoardPiece(true,false,false,true);
-        maze.board[3] = new BoardPiece(false,true,false,true);
-        maze.board[4] = new BoardPiece(true,true,true,true);
-        maze.board[5] = new BoardPiece(false,true,false,true);
-        maze.board[6] = new BoardPiece(false,true,true,false);
-        maze.board[7] = new BoardPiece(true,false,true,false);
-        maze.board[8] = new BoardPiece(true,true,false,true, true);
-
-        return maze;
     }
     public String toString() {return null;}
 
@@ -144,4 +136,22 @@ public class MazeBoard {
         movePlayer(playerDirection);
     }
 
+    public static MazeBoard map3x3() {
+        MazeBoard maze = new MazeBoard();
+
+        // test with simple layout
+        maze.board = new BoardPiece[9];
+        maze.height = 3; maze.width = 3;
+        maze.board[0] = new BoardPiece(false,false,true,true);
+        maze.board[1] = new BoardPiece(true,false, true, false);
+        maze.board[2] = new BoardPiece(true,false,false,true);
+        maze.board[3] = new BoardPiece(false,true,false,true);
+        maze.board[4] = new BoardPiece(true,true,true,true,true);
+        maze.board[5] = new BoardPiece(false,true,false,true);
+        maze.board[6] = new BoardPiece(false,true,true,false);
+        maze.board[7] = new BoardPiece(true,true,true,false);
+        maze.board[8] = new BoardPiece(true,true,false,false);
+
+        return maze;
+    }
 }

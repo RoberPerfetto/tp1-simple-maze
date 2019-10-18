@@ -1,6 +1,7 @@
 package ar.edu.ips.aus.seminario2.sampleproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.media.MediaPlayer;
+import android.widget.TextView;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -23,6 +25,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private MazeBoard board;
     private Bitmap playerSprites;
+
+    private String maze_option;
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -40,7 +44,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     private void init() {
-        board = MazeBoard.from("some repl");
+
+        board = MazeBoard.from("3x3");
         getHolder().addCallback(this);
 
         playerSprites = BitmapFactory.decodeResource(getResources(), R.drawable.characters);
@@ -146,4 +151,5 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         }
     }
+    public void setMaze_option(String str) {this.maze_option = str;}
 }

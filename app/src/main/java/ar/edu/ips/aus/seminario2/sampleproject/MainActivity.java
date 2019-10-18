@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         GameView mazeView = (GameView)findViewById(R.id.gameView);
         mazeView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+        mazeView.setMaze_option(maze_option);
         mazeView.setZOrderMediaOverlay(true);
         mazeView.setZOrderOnTop(true);
 
@@ -97,29 +98,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    }
 
     private int lookupResource(BoardPiece piece) {
-        int iconIndex = 0b1000 * (piece.isOpen(MazeBoard.Direction.WEST)? 1:0) +
-                0b0100 * (piece.isOpen(MazeBoard.Direction.NORTH)? 1:0) +
-                0b0010 * (piece.isOpen(MazeBoard.Direction.EAST)? 1:0) +
-                0b0001 * (piece.isOpen(MazeBoard.Direction.SOUTH)? 1:0);
+        if(piece.getExit()){
+         return R.drawable.m5;
+        }else {
+            int iconIndex = 0b1000 * (piece.isOpen(MazeBoard.Direction.WEST) ? 1 : 0) +
+                    0b0100 * (piece.isOpen(MazeBoard.Direction.NORTH) ? 1 : 0) +
+                    0b0010 * (piece.isOpen(MazeBoard.Direction.EAST) ? 1 : 0) +
+                    0b0001 * (piece.isOpen(MazeBoard.Direction.SOUTH) ? 1 : 0);
 
-        int[] iconLookupTable = { 0,
-                R.drawable.m1b,
-                R.drawable.m1r,
-                R.drawable.m2rb,
-                R.drawable.m1t,
-                R.drawable.m2v,
-                R.drawable.m2tr,
-                R.drawable.m3l,
-                R.drawable.m1l,
-                R.drawable.m2bl,
-                R.drawable.m2h,
-                R.drawable.m3t,
-                R.drawable.m2lt,
-                R.drawable.m3r,
-                R.drawable.m3b,
-                R.drawable.m4};
+            int[] iconLookupTable = {
+                    0,
+                    R.drawable.m1b,
+                    R.drawable.m1r,
+                    R.drawable.m2rb,
+                    R.drawable.m1t,
+                    R.drawable.m2v,
+                    R.drawable.m2tr,
+                    R.drawable.m3l,
+                    R.drawable.m1l,
+                    R.drawable.m2bl,
+                    R.drawable.m2h,
+                    R.drawable.m3t,
+                    R.drawable.m2lt,
+                    R.drawable.m3r,
+                    R.drawable.m3b,
+                    R.drawable.m4};
 
-        return iconLookupTable[iconIndex];
+            return iconLookupTable[iconIndex];
+        }
     }
 
     @Override
