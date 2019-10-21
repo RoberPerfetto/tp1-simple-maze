@@ -47,8 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonRight.setOnClickListener(this);
 
         GameView mazeView = (GameView)findViewById(R.id.gameView);
+
         mazeView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
         mazeView.setMaze_option(maze_option);
+        mazeView.init();
         mazeView.setZOrderMediaOverlay(true);
         mazeView.setZOrderOnTop(true);
 
@@ -144,5 +146,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             board.setNewDirection(MazeBoard.Direction.EAST);
         }
 
+    }
+
+    public String getMaze_option(){
+        return maze_option;
     }
 }

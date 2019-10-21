@@ -30,22 +30,22 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        //init();
     }
 
     public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        //init();
     }
 
     public GameView(Context context){
         super(context);
-        init();
+        //init();
     }
 
-    private void init() {
+    public void init() {
 
-        board = MazeBoard.from("3x3");
+        board = MazeBoard.from(maze_option);
         getHolder().addCallback(this);
 
         playerSprites = BitmapFactory.decodeResource(getResources(), R.drawable.characters);
